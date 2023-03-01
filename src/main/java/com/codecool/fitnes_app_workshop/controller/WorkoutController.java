@@ -34,8 +34,11 @@ public class WorkoutController {
     }
 
     @PostMapping
-    public boolean addWorkout(@RequestBody WorkoutDTO request) {
-        return workoutService.addWorkout(request.name(), request.difficulty(), request.duration());
+    public ResponseEntity addWorkout(@RequestBody WorkoutDTO request) {
+
+        if (workoutService.addWorkout(request.name(), request.difficulty(), request.duration())) {
+            return new ResponseEntity(HttpStatus.CREATED);
+        } else return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
 
     @DeleteMapping("/{id}")
