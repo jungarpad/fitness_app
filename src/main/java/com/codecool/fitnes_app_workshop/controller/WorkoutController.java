@@ -35,7 +35,6 @@ public class WorkoutController {
 
     @PostMapping
     public boolean addWorkout(@RequestBody WorkoutDTO request) {
-
         return workoutService.addWorkout(request.name(), request.difficulty(), request.duration());
     }
 
