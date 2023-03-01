@@ -2,12 +2,14 @@ package com.codecool.fitnes_app_workshop.repository;
 
 import com.codecool.fitnes_app_workshop.model.Workout;
 import com.codecool.fitnes_app_workshop.repository.mapper.WorkoutMapper;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Log4j2
 @Repository
 public class WorkoutJdbcDao {
     private final JdbcTemplate template;
@@ -24,7 +26,8 @@ public class WorkoutJdbcDao {
     }
 
     public List<Workout> findWorkouts(String workoutName) {
-        String SQL = "SELECT * FROM workout WHERE name ilike '%?%';";
+        log.info("SQL query for {}", workoutName);
+        String SQL = "SELECT * FROM workout WHERE name ILIKE '%?%';";
         return template.query(SQL, mapper, workoutName);
     }
 
