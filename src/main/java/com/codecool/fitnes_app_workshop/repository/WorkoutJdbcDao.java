@@ -35,7 +35,7 @@ public class WorkoutJdbcDao {
 
     public boolean addWorkout(Workout workout) {
         String SQL = "INSERT INTO workout(name, duration, difficulty) VALUES (?, ?, ?);";
-        return template.update(SQL, workout.getName(), workout.getDuration(), workout.getDifficulty()) == 1;
+        return template.update(SQL, workout.getName(), workout.getDuration(), workout.getDifficulty().toString()) == 1;
     }
 
     public boolean deleteWorkout(long id) {

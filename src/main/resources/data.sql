@@ -1,14 +1,13 @@
-INSERT INTO Workout (name, duration, difficulty) VALUES
-	('Full Body Workout', 60, 'Intermediate'),
-	('Cardio Blast', 30, 'Advanced'),
-	('Yoga Flow', 45, 'Beginner');
+insert into Workout (name, duration, difficulty) values
+	('Full Body Workout', 60, 'Easy'),
+	('Cardio Blast', 30, 'Moderate'),
+	('Yoga Flow', 45, 'Hard');
 
-	INSERT INTO Exercise (name, calories_burned, muscle_group) VALUES
+	insert into Exercise (name, calories_burned, muscle_group) values
 	  ('Squats', 100, 'Legs'),
 	  ('Push-ups', 80, 'Chest'),
 	  ('Bicep curls', 60, 'Arms'),
 	  ('Plank', 50, 'Core'),
 	  ('Lunges', 90, 'Legs'),
-	  ('Burpees', 120, 'Full Body'),
 	  ('Tricep dips', 70, 'Arms'),
 	  ('Crunches', 40, 'Core');

@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS workout;
+DROP TABLE IF EXISTS exercise;
 CREATE TABLE workout (
         id SERIAL PRIMARY KEY,
         name VARCHAR(50) NOT NULL,
