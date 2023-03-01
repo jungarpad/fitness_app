@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Workout {
     private long id;
-    private String name, difficulty;
+    private String name;
     private int duration;
+    private Difficulty difficulty;
 }

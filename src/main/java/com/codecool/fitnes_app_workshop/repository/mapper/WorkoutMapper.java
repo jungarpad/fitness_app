@@ -1,5 +1,6 @@
 package com.codecool.fitnes_app_workshop.repository.mapper;
 
+import com.codecool.fitnes_app_workshop.model.Difficulty;
 import com.codecool.fitnes_app_workshop.model.Workout;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
@@ -15,7 +16,7 @@ public class WorkoutMapper implements RowMapper<Workout> {
         workout.setId(rs.getLong("id"));
         workout.setName(rs.getString("name"));
         workout.setDuration(rs.getInt("duration"));
-        workout.setDifficulty(rs.getString("difficulty"));
+        workout.setDifficulty(Difficulty.valueOf(rs.getString("difficulty").toUpperCase()));
         return workout;
     }
 }
