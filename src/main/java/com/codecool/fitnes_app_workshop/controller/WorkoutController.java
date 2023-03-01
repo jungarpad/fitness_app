@@ -29,21 +29,26 @@ public class WorkoutController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Workout> getWorkoutById(@PathVariable long id) {
-        return workoutService.getWorkoutById(id);
+    public ResponseEntity<Optional<Workout>> getWorkoutById(@PathVariable long id) {
+        Optional<Workout> maybeWorkout = workoutService.getWorkoutById(id);
+        if (maybeWorkout.isPresent()) {
+            return new ResponseEntity<>(maybeWorkout, HttpStatus.FOUND);
+        } else return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @PostMapping
-    public ResponseEntity addWorkout(@RequestBody WorkoutDTO request) {
+    public ResponseEntity<String> addWorkout(@RequestBody WorkoutDTO request) {
 
         if (workoutService.addWorkout(request.name(), request.difficulty(), request.duration())) {
-            return new ResponseEntity(HttpStatus.CREATED);
-        } else return new ResponseEntity(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } else return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @DeleteMapping("/{id}")
-    public boolean deleteWorkout(@PathVariable long id) {
-        return workoutService.deleteWorkout(id);
+    public ResponseEntity<String> deleteWorkout(@PathVariable long id) {
+        if (workoutService.deleteWorkout(id)) {
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 }
 
