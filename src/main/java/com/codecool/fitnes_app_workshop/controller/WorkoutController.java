@@ -25,7 +25,7 @@ public class WorkoutController {
         return new ResponseEntity<>(workoutService.getWorkoutList(), HttpStatus.OK);
     }
 
-    @GetMapping("q=")
+    @GetMapping(params = "q")
     public List<Workout> findWorkouts(@RequestParam("q") String workoutName) {
         log.info("Get param {}", workoutName);
         return workoutService.findWorkouts(workoutName);
